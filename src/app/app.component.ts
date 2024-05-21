@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Northwind Market';
+  /*title = 'Northwind Market';
 
   cartCount: number = 0;
 
@@ -49,4 +49,5 @@ export class AppComponent {
 
     console.log('Ürün sepete eklendi.');
   }
+  */
 }
