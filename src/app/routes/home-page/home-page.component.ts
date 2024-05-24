@@ -21,5 +21,10 @@ import { ProductCardListComponent } from '../../features/products/components/pro
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomePageComponent {
+  selectedCategoryId: number | null = null;
+
+  onChangeCategorySelect(event: number | null){
+    this.selectedCategoryId = event;
+  }
 
 }

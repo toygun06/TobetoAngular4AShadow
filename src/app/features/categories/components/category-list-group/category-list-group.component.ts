@@ -1,5 +1,5 @@
 import { CategoryListItem } from './../../models/category-list.item';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListGroupComponent, ListGroupItems, ListGroupItem } from '../../../../shared/components/list-group/list-group.component';
 
@@ -14,6 +14,7 @@ import { ListGroupComponent, ListGroupItems, ListGroupItem } from '../../../../s
   styleUrl: './category-list-group.component.css'
 })
 export class CategoryListGroupComponent {
+  @Output() changeSelect = new EventEmitter<number | null>();
 
   categoryList : CategoryListItem[] = [
     {id: 1, name: 'Beverages'},
@@ -26,7 +27,7 @@ export class CategoryListGroupComponent {
   ]; //Mock Data
 
   onChangeSelect(selectedItemId: string | null) {
-    console.log(selectedItemId);
+    this.changeSelect.emit(Number(selectedItemId));
   }
 
   get categoryListGroupItems(): ListGroupItems {
