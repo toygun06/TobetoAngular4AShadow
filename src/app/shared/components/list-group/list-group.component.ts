@@ -26,7 +26,7 @@ export class ListGroupComponent {
   @Output() changeSelect = new EventEmitter<string | null>();
   // EventEmitter: Component'ten dışarıya event göndermek için kullanılır.
 
-  selectedItemId: string | null = null;
+  @Input() selectedItemId: string | null = null;
 
   onClickItem(event: ListGroupItem) {
     this.selectedItemId = this.selectedItemId != event.id ? event.id : null;
