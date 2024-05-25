@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ProductListItem } from '../../models/product-list-item';
 import { CommonModule } from '@angular/common';
 import { CardComponent } from '../../../../shared/components/card/card.component';
@@ -11,7 +11,10 @@ import { CardComponent } from '../../../../shared/components/card/card.component
   styleUrl: './product-card-list.component.css'
 })
 export class ProductCardListComponent {
+
   @Input() filterByCategoryId: number | null = null;
+  @Output()viewProduct = new EventEmitter<ProductListItem>();
+
 
   productList : ProductListItem[] =[
     {
@@ -63,6 +66,10 @@ export class ProductCardListComponent {
       imageUrl: 'https://via.placeholder.com/200',
     },
   ] //Mock Data
+
+  onViewProduct(product: ProductListItem) {
+    this.viewProduct.emit(product);
+    }
 
   get filteredProductList(): ProductListItem[] {
     let filteredProductList = this.productList;

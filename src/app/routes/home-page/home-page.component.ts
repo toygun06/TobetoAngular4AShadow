@@ -4,6 +4,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { BasicLayoutComponent } from '../../shared/components/basic-layout/basic-layout.component';
 import { CategoryListGroupComponent } from '../../features/categories/components/category-list-group/category-list-group.component';
 import { ProductCardListComponent } from '../../features/products/components/product-card-list/product-card-list.component';
+import { ProductListItem } from '../../features/products/models/product-list-item';
 
 @Component({
   selector: 'app-home-page',
@@ -21,6 +22,7 @@ import { ProductCardListComponent } from '../../features/products/components/pro
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomePageComponent implements OnInit {
+
   selectedCategoryId: number | null = null;
 
   constructor(private router: Router, private route: ActivatedRoute) {}
@@ -40,6 +42,10 @@ export class HomePageComponent implements OnInit {
       queryParams: {categoryId: this.selectedCategoryId},
       relativeTo: this.route,
     });
+  }
+
+  onViewProduct(product: ProductListItem) {
+    this.router.navigate(['products', 'detail', product.id]); // localhost:4200/products/detail/1
   }
 
 }
