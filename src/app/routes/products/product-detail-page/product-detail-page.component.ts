@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { BasicLayoutComponent } from "../../../shared/components/basic-layout/basic-layout.component";
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProductDetailsComponent } from '../../../features/products/components/product-details/product-details.component';
+import { PlaceholderComponent } from '../../../shared/components/placeholder/placeholder.component';
 
 @Component({
     selector: 'app-product-detail-page',
@@ -11,7 +13,8 @@ import { ActivatedRoute, Router } from '@angular/router';
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         CommonModule,
-        BasicLayoutComponent
+        BasicLayoutComponent,
+        ProductDetailsComponent
     ]
 })
 export class ProductDetailPageComponent implements OnInit{
