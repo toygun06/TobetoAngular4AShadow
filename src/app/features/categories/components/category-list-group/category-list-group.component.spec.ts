@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CategoryListGroupComponent } from './category-list-group.component';
+import CategoryListGroupComponent from './category-list-group.component';
 
 describe('CategoryListGroupComponent', () => {
   let component: CategoryListGroupComponent;
@@ -11,7 +11,7 @@ describe('CategoryListGroupComponent', () => {
       imports: [CategoryListGroupComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(CategoryListGroupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

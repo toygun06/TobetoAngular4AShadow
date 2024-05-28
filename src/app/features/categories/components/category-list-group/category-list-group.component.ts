@@ -1,5 +1,6 @@
+import { CategoriesService } from './../../services/categories.service';
 import { CategoryListItem } from './../../models/category-list.item';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListGroupComponent, ListGroupItems, ListGroupItem } from '../../../../shared/components/list-group/list-group.component';
 
@@ -13,21 +14,25 @@ import { ListGroupComponent, ListGroupItems, ListGroupItem } from '../../../../s
   templateUrl: './category-list-group.component.html',
   styleUrl: './category-list-group.component.css'
 })
-export class CategoryListGroupComponent {
+export default class CategoryListGroupComponent implements OnInit {
 
   @Input() initialSelectedCategoryId?: number | null;
   @Output() changeSelect = new EventEmitter<number | null>();
 
-  categoryList : CategoryListItem[] = [
-    {id: 1, name: 'Beverages'},
-    {id: 2, name: 'Canned Goods'},
-    {id: 3, name: 'Dairy'},
-    {id: 4, name: 'Frozen Foods'},
-    {id: 5, name: 'Meat'},
-    {id: 6, name: 'Produce'},
-    {id: 7, name: 'Snacks'},
-  ]; //Mock Data
+  categoryList : CategoryListItem[] = [];
 
+  constructor(private CategoriesService:
+    CategoriesService, private change: ChangeDetectorRef) {}
+    ngOnInit(): void {
+      this.getList()
+    }
+    getList() {
+      this.CategoriesService.getList().subscribe
+      ((categories) => {
+        this.categoryList = categories;
+        this.change.markForCheck();
+      })
+    }
   onChangeSelect(selectedItemId: string | null) {
     this.changeSelect.emit(selectedItemId ? Number(selectedItemId) : null);
   }
