@@ -4,6 +4,7 @@ import { BasicLayoutComponent } from "../../../shared/components/basic-layout/ba
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductDetailsComponent } from '../../../features/products/components/product-details/product-details.component';
 import { PlaceholderComponent } from '../../../shared/components/placeholder/placeholder.component';
+import { SharedModule } from '../../../shared/shared.module';
 
 @Component({
     selector: 'app-product-detail-page',
@@ -12,8 +13,9 @@ import { PlaceholderComponent } from '../../../shared/components/placeholder/pla
     styleUrl: './product-detail-page.component.css',
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        CommonModule,
-        BasicLayoutComponent,
+        //CommonModule,
+        //BasicLayoutComponent,
+        SharedModule,
         ProductDetailsComponent
     ]
 })

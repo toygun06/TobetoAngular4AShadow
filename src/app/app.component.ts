@@ -6,8 +6,8 @@ import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [CommonModule, RouterModule, NavbarComponent, FooterComponent],
+  standalone: true, //Angular 17 sonrasında için varsayılan haline geldi. Standalone componentler herhangi bir module yapısına bağlı kalmadan var olabilirler. 
+  imports: [RouterModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

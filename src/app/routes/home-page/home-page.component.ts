@@ -5,14 +5,16 @@ import { BasicLayoutComponent } from '../../shared/components/basic-layout/basic
 import CategoryListGroupComponent from '../../features/categories/components/category-list-group/category-list-group.component';
 import { ProductCardListComponent } from '../../features/products/components/product-card-list/product-card-list.component';
 import { ProductListItem } from '../../features/products/models/product-list-item';
+import { SharedModule } from '../../shared/shared.module';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
   imports: [
-    CommonModule,
+    // CommonModule,
     RouterModule,
-    BasicLayoutComponent,
+    //BasicLayoutComponent,
+    SharedModule,
     CategoryListGroupComponent,
     ProductCardListComponent
 
