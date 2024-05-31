@@ -12,11 +12,12 @@ import { PlaceholderComponent } from '../../../../shared/components/placeholder/
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { HighlightDirective } from '../../../../shared/directives/highlight.directive';
 import { VatPipe } from '../../pipes/vat.pipe';
+import { SharedModule } from '../../../../shared/shared.module';
 
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [CommonModule, PlaceholderComponent, ButtonComponent,VatPipe, HighlightDirective],
+  imports: [CommonModule, PlaceholderComponent, ButtonComponent,VatPipe, HighlightDirective, SharedModule],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

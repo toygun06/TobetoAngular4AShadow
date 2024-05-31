@@ -39,6 +39,8 @@ export class HomePageComponent implements OnInit {
     this.detectOldUser();
   }
   detectOldUser() {
+    if(!localStorage) return;
+
     const isOldUser = Boolean(localStorage.getItem('isOldUser'));
     if (!isOldUser) {
       localStorage.setItem('isOldUser', 'true');
