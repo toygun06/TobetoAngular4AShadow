@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { BasicLayoutComponent } from '../../shared/components/basic-layout/basic-layout.component';
 import CategoryListGroupComponent from '../../features/categories/components/category-list-group/category-list-group.component';
 import { ProductCardListComponent } from '../../features/products/components/product-card-list/product-card-list.component';
 import { ProductListItem } from '../../features/products/models/product-list-item';
 import { SharedModule } from '../../shared/shared.module';
+import { IfNotDirective } from '../../shared/directives/if-not.directive';
 
 @Component({
   selector: 'app-home-page',
@@ -16,7 +17,8 @@ import { SharedModule } from '../../shared/shared.module';
     //BasicLayoutComponent,
     SharedModule,
     CategoryListGroupComponent,
-    ProductCardListComponent
+    ProductCardListComponent,
+    IfNotDirective
 
   ],
   templateUrl: './home-page.component.html',
@@ -27,10 +29,28 @@ export class HomePageComponent implements OnInit {
 
   selectedCategoryId: number | null = null;
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  oldUser: boolean = false;
+
+
+  constructor(private router: Router, private route: ActivatedRoute, private change: ChangeDetectorRef) {}
+
   ngOnInit(): void {
     this.getProductFiltersFromRoute();
+    this.detectOldUser();
   }
+  detectOldUser() {
+    const isOldUser = Boolean(localStorage.getItem('isOldUser'));
+    if (!isOldUser) {
+      localStorage.setItem('isOldUser', 'true');
+      return;
+    }
+    setTimeout(() => {
+      this.oldUser = isOldUser;
+      this.change.markForCheck();
+    }, 5000);
+  }
+
+
   getProductFiltersFromRoute() {
     this.route.queryParams.subscribe(queryParams => {
       const categoryId = queryParams['categoryId'];
