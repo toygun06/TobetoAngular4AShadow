@@ -1,9 +1,6 @@
-HomePageComponent {{now}}
-<app-basic-layout>
-  <div
-    *appIfNot="oldUser; else welcomeBack"
-    class="d-flex flex-column justify-content-center align-items-center my-3"
-  >
+<div class="nw-container">
+  <div>HomePageComponent: {{now}}</div>
+  <div *appIfNot="oldUser; else welcomeBack" class="d-flex flex-column justify-content-center align-items-center my-3">
     <h1>Welcome!</h1>
     <small>Out products are fresh!</small>
   </div>
@@ -15,19 +12,16 @@ HomePageComponent {{now}}
   <div class="row">
     <aside class="col-3">
       <h1 style="font-size: 1.5rem">Categories</h1>
-      <app-category-list-group
-        [selectedCategoryId]="selectedCategoryId"
-        (changeSelect)="onChangeCategorySelect($event)"
-      ></app-category-list-group>
+      <app-category-list-group [selectedCategoryId]="selectedCategoryId"
+        (changeSelect)="onChangeCategorySelect($event)"></app-category-list-group>
       <!-- $event: Output'un verdigi degeri referans eder. -->
     </aside>
 
     <section class="col">
       <h1 style="font-size: 1.5rem">Products</h1>
-      <app-product-card-list
-        [filterByCategoryId]="selectedCategoryId"
-        (viewProduct)="onViewProduct($event)"
-      ></app-product-card-list>
+      <app-product-card-list [filterByCategoryId]="selectedCategoryId"
+        (viewProduct)="onViewProduct($event)"></app-product-card-list>
     </section>
   </div>
-</app-basic-layout>
+
+</div>

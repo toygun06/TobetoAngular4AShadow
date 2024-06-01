@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [
     CommonModule,
-    SharedModule,
     ButtonComponent
   ],
   templateUrl: './my-account-page.component.html',

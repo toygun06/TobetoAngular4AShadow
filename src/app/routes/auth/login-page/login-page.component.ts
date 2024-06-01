@@ -10,7 +10,6 @@ import { LoginFormComponent } from '../../../features/auth/components/login-form
   imports: [
     CommonModule,
     RouterModule,
-    // BasicLayoutComponent,
     SharedModule,
     LoginFormComponent,
   ],
