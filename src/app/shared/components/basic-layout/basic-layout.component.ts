@@ -1,7 +1,4 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { NavbarComponent } from '../navbar/navbar.component';
-import { FooterComponent } from '../footer/footer.component';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-basic-layout',
@@ -12,8 +9,9 @@ import { FooterComponent } from '../footer/footer.component';
   //   FooterComponent
   // ],
   templateUrl: './basic-layout.component.html',
-  styleUrl: './basic-layout.component.css'
+  styleUrl: './basic-layout.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BasicLayoutComponent {
-
+  now = new Date();
 }

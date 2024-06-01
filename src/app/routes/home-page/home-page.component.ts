@@ -27,6 +27,7 @@ import { IfNotDirective } from '../../shared/directives/if-not.directive';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomePageComponent implements OnInit {
+  now = new Date();
 
   selectedCategoryId: number | null = null;
 
