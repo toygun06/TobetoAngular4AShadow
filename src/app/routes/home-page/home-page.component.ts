@@ -1,3 +1,4 @@
+import { LocalStorageService } from './../../core/browser/services/local-storage.service';
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
@@ -32,16 +33,20 @@ export class HomePageComponent implements OnInit {
   oldUser: boolean = false;
 
 
-  constructor(private router: Router, private route: ActivatedRoute, private change: ChangeDetectorRef) {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private change: ChangeDetectorRef,
+    private LocalStorageService: LocalStorageService
+  ) {}
 
   ngOnInit(): void {
     this.getProductFiltersFromRoute();
     this.detectOldUser();
   }
   detectOldUser() {
-    if(!localStorage) return;
 
-    const isOldUser = Boolean(localStorage.getItem('isOldUser'));
+    const isOldUser = this.LocalStorageService.get<boolean>('isOldUser');
     if (!isOldUser) {
       localStorage.setItem('isOldUser', 'true');
       return;
