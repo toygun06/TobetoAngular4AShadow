@@ -23,6 +23,7 @@ export default class CategoryListGroupComponent implements OnInit {
 
   constructor(private CategoriesService:
     CategoriesService, private change: ChangeDetectorRef) {}
+    
     ngOnInit(): void {
       this.getList()
     }

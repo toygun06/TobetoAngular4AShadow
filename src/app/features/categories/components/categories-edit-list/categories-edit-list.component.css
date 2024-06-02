@@ -1,0 +1,26 @@
+:host {
+  display: block;
+}
+.item-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 70%;
+}
+
+.list-group-item{
+  justify-content: center;
+}
+
+.item-info {
+  flex-grow: 1;
+}
+
+.item-info h4, .item-info p {
+  display: inline;
+  margin-right: 10px;
+}
+
+app-button {
+  margin-left: 10px;
+}
