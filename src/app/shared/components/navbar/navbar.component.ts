@@ -18,10 +18,26 @@ export class NavbarComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    if(this.authService.isAuthenticated){
-      this.isLogged = true;
-      this.displayUserName = this.authService.tokenPayload?.userName!;
-    }
+    // if (this.authService.isAuthenticated) {
+    //   this.isLogged = true;
+    //   this.displayUserName = this.authService.tokenPayload?.userName!;
+    // }
 
+    // this.authService.logged.subscribe(() => {
+    //   this.isLogged = true;
+    //   this.displayUserName = this.authService.tokenPayload!.userName;
+    // });
+
+    // this.authService.loggedOut.subscribe(() => {
+    //   this.isLogged = false;
+    //   this.displayUserName = null;
+    // });
+
+    this.authService.isLogged.subscribe((isLogged)=> {
+      this.isLogged = true;
+      this.displayUserName = isLogged
+      ? this.authService.tokenPayload!.userName
+      : null;
+    })
   }
 }
