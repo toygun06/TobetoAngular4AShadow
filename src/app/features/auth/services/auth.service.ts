@@ -5,8 +5,9 @@ import { environment } from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { LoggedInformation } from '../models/logged-information';
 import { Observable, tap } from 'rxjs';
-import { AuthService as CoreAuthService} from '../../../core/auth/services/auth.service';
+import { AuthService as CoreAuthService } from '../../../core/auth/services/auth.service';
 import { ACCESS_TOKEN_KEY } from '../../../core/auth/constants/auth-keys';
+import { SecretMessage } from '../models/secret-message';
 
 @Injectable({
   providedIn: 'root',
@@ -36,5 +37,13 @@ export class AuthService extends CoreAuthService {
           this._isLogged.next(true);
         })
       );
+  }
+
+  test(): Observable<SecretMessage> {
+    return this.http.get<SecretMessage>(`${this.apiControllerUrl}/test`,);
+  }
+
+  testAdmin(): Observable<SecretMessage> {
+    return this.http.get<SecretMessage>(`${this.apiControllerUrl}/test-admin`,);
   }
 }

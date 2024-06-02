@@ -1,53 +1,44 @@
-import { Component } from '@angular/core';
-import { NavbarComponent } from './shared/components/navbar/navbar.component';
-import { FooterComponent } from './shared/components/footer/footer.component';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { AuthService } from './features/auth/services/auth.service';
 
 @Component({
   selector: 'app-root',
-  standalone: true, //Angular 17 sonrasında için varsayılan haline geldi. Standalone componentler herhangi bir module yapısına bağlı kalmadan var olabilirler. 
+  standalone: true, //Angular 17 sonrasında için varsayılan haline geldi. Standalone componentler herhangi bir module yapısına bağlı kalmadan var olabilirler.
   imports: [RouterModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
-  /*title = 'Northwind Market';
+export class AppComponent implements OnInit {
+  constructor(private authService: AuthService) {}
+ 
+  ngOnInit(): void {
+    this.authService.test().subscribe({
+      next: (secretMessage) => {
+        console.log(secretMessage);
+      },
+      error: (error) => {
+        console.error(error);
+      },
+    });
 
-  cartCount: number = 0;
-
-  products: { name: string; price: number; discontinued: boolean }[] =[
-    {
-      name: "Çay",
-      price: 100,
-      discontinued: false
-    },
-    {
-      name: "Kahve",
-      price: 200,
-      discontinued: true
-    },
-    {
-      name: "Su",
-      price: 50,
-      discontinued: false
-    },
-    {
-      name: "Meyve Suyu",
-      price: 20,
-      discontinued: false
-    },
-    {
-      name: "Maden Suyu",
-      price: 7.5,
-      discontinued: true
-    }
-  ]
-
-  onAddProductToCart(): void {
-    this.cartCount += 1;
-
-    console.log('Ürün sepete eklendi.');
+    this.authService.testAdmin().subscribe({
+      next: (secretMessage) => {
+        console.log(secretMessage);
+      },
+      error: (error) => {
+        console.error(error);
+      },
+    });
   }
-  */
 }
+
+// Angular 17 öncesinde varsayılan olarak componentler Module yapısında tanımlanıyorlardı.
+// Angular Module Örneği
+// @NgModule({
+//   declarations: [AppComponent], // Component, Directive ve Pipe'ları tanımlar.
+//   imports: [], // Dışarıdan alınan modülleri ekler.
+//   providers: [], // Servisleri ekler.
+//   bootstrap: [AppComponent], // Uygulamanın başlangıç componentini belirler.
+// })
+// export class AppModule {}
