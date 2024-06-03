@@ -4,6 +4,8 @@ import { productsRoutes } from './routes/products/products.routes';
 import { categoriesRoutes } from './routes/categories/categories.routes';
 import { BasicLayoutComponent } from './shared/components/basic-layout/basic-layout.component';
 import { HomePageComponent } from './routes/home-page/home-page.component';
+import { FormComponent } from './routes/form/form.component';
+import { isDirtyGuard } from './core/auth/guards/isDirty.guard';
 
 export const routes: Routes = [
   {
@@ -21,6 +23,11 @@ export const routes: Routes = [
       // ... spread operator ile bir array içindeki tüm elemanlarını tek tek ilgili yere yerleştirir..
       ...productsRoutes,
       ...categoriesRoutes,
+      {
+        path: 'form',
+        component: FormComponent,
+        canDeactivate: [isDirtyGuard]
+      }
     ],
   },
 ];
