@@ -2,13 +2,16 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CanComponentDeactivate } from '../../core/auth/guards/isDirty.guard';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { LoadingService } from '../../features/loading/loading.service';
+import { LoadingOverlayComponent } from '../../features/loading/loading-overlay/loading-overlay.component';
 
 @Component({
   selector: 'app-form',
   standalone: true,
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LoadingOverlayComponent
   ],
   templateUrl: './form.component.html',
   styleUrl: './form.component.css',
@@ -23,7 +26,7 @@ throw new Error('Method not implemented.');
 }
   myForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private loadingService: LoadingService) {
     this.myForm = this.fb.group({
       name: [''],
       email: ['']
@@ -46,8 +49,13 @@ throw new Error('Method not implemented.');
 
   onSubmit() {
     // Formu submit ettiğinizde formu işleyin ve formu resetleyin
+    this.loadingService.showLoading(); // Loading başlat
+
     console.log('Form submitted:', this.myForm.value);
-    this.formDirty = false;
-    this.myForm.reset();
+    setTimeout(() => { // Simüle edilen bir backend işlemi için setTimeout kullanıldı
+      this.formDirty = false;
+      this.myForm.reset();
+      this.loadingService.hideLoading(); // Loading gizle
+    }, 2000); // Simüle edilen backend işlemi için 2 saniye bekletildi
   }
 }
