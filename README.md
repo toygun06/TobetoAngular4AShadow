@@ -1,6 +1,11 @@
 # NORTHWIND
 
 
+
+
+##
+[Angular Pipe & Directive](https://github.com/toygun06/TobetoAngular4AShadow/blob/task-list-2/research-tasks.txt)
+##
 <a href="https://idx.google.com/import?url=https%3A%2F%2Fgithub.com%2Ftoygun06%2FTobetoAngular4AShadow">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://cdn.idx.dev/btn/open_light_32.svg">
