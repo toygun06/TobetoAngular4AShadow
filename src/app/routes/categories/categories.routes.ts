@@ -6,5 +6,5 @@ export const categoriesRoutes : Routes = [
   {
     path: 'categories/new',
     component: NewCategoryPageComponent
-  }
+  },
 ]

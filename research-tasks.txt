@@ -1,0 +1,153 @@
+- Angular Built-In Pipes araştırınız.
+
+Angular, geliştirme sürecini hızlandırmak ve kodun okunabilirliğini artırmak için çeşitli yerleşik pipe'lar sağlar. Bu pipe'lar, veriyi şablonda formatlamak için kullanılır. Angular'da yerleşik olarak bulunan bazı temel pipe'lar şunlardır:
+
+DatePipe: Tarihleri biçimlendirmek için kullanılır.
+UpperCasePipe: Metni büyük harfe dönüştürür.
+LowerCasePipe: Metni küçük harfe dönüştürür.
+CurrencyPipe: Sayıları para birimi olarak biçimlendirir.
+DecimalPipe: Sayıları belirli bir ondalık biçimde biçimlendirir.
+PercentPipe: Sayıları yüzde olarak biçimlendirir.
+JsonPipe: Nesneleri JSON formatına dönüştürür.
+SlicePipe: Dizileri veya dizgileri kesmek için kullanılır.
+
+http://localhost:4200/pipe-example
+
+- translate isminde bir pipe oluşturunuz, verilen değerin istenilen dilde çevirisini geri dönmelidir.
+
+http://localhost:4200/pipe-example Translate Pipe Demo
+
+- Angular'da yer alan built-in directive'leri araştırınız ve notlar tutunuz.
+- Angular'da yer alan built-in yapısal directive'leri araştırınız ve notlar tutunuz.
+
+Angular'da yer alan built-in (yerleşik) direktifler, HTML elementlerinin davranışlarını değiştirmek veya zenginleştirmek için kullanılan güçlü araçlardır. Angular, birkaç yerleşik yapısal ve öznitelik (attribute) direktifi sağlar. Bu direktifler, Angular uygulamalarında yaygın olarak kullanılır ve aşağıda bunlarla ilgili detaylı bilgiler bulabilirsiniz.
+
+Yapısal Direktifler (Structural Directives)
+Yapısal direktifler, DOM ağacını manipüle ederek DOM elementlerini ekler veya kaldırır. Bu direktifler genellikle * ile başlar.
+
+ngIf
+
+Koşullu olarak DOM'a eleman ekler veya çıkarır.
+Kullanım:
+html
+Kodu kopyala
+<div *ngIf="condition">Content to show when condition is true.</div>
+ngFor
+
+Bir koleksiyonun her elemanı için DOM'a tekrar eden elementler ekler.
+Kullanım:
+html
+Kodu kopyala
+<div *ngFor="let item of items">{{ item }}</div>
+ngSwitch
+
+Birden çok alternatif arasında seçim yapmayı sağlar.
+ngSwitchCase ve ngSwitchDefault direktifleriyle kullanılır.
+Kullanım:
+html
+Kodu kopyala
+<div [ngSwitch]="expression">
+  <div *ngSwitchCase="case1">Case 1</div>
+  <div *ngSwitchCase="case2">Case 2</div>
+  <div *ngSwitchDefault>Default Case</div>
+</div>
+Öznitelik Direktifleri (Attribute Directives)
+Öznitelik direktifleri, mevcut DOM elementlerinin görünümünü veya davranışını değiştirir.
+
+ngClass
+
+Dinamik olarak CSS sınıflarını ekler veya çıkarır.
+Kullanım:
+html
+Kodu kopyala
+<div [ngClass]="{ 'class-name': condition }">Content</div>
+ngStyle
+
+Dinamik olarak stil ekler veya değiştirir.
+Kullanım:
+html
+Kodu kopyala
+<div [ngStyle]="{ 'font-style': styleExp, 'color': colorExp }">Styled Content</div>
+ngModel
+
+Form elemanları ile veri bağlama yapar.
+Çift yönlü veri bağlama sağlar.
+Kullanım:
+html
+Kodu kopyala
+<input [(ngModel)]="property">
+Diğer Yerleşik Direktifler
+ngTemplateOutlet
+
+Bir ng-template öğesinin içeriğini başka bir konumda render etmek için kullanılır.
+Kullanım:
+html
+Kodu kopyala
+<ng-container *ngTemplateOutlet="templateRef"></ng-container>
+<ng-template #templateRef>Template Content</ng-template>
+ngContainer
+
+Kendisi DOM'a render edilmez, ancak içerdiği elementleri render eder.
+Kullanım:
+html
+Kodu kopyala
+<ng-container *ngIf="condition">
+  <p>This will be rendered only if the condition is true.</p>
+</ng-container>
+ngTemplate
+
+İçeriği tekrar kullanılabilir hale getirmek için kullanılır.
+Tek başına render edilmez, ngTemplateOutlet veya diğer direktiflerle birlikte kullanılır.
+Kullanım:
+html
+Kodu kopyala
+<ng-template #templateRef>Reusable Template Content</ng-template>
+Örnek Uygulama
+Bu direktiflerin nasıl çalıştığını anlamak için bir örnek uygulama yapalım:
+
+app.component.html
+
+html
+Kodu kopyala
+<div *ngIf="isVisible">This is conditionally visible.</div>
+
+<ul>
+  <li *ngFor="let item of items">{{ item }}</li>
+</ul>
+
+<div [ngSwitch]="selectedOption">
+  <div *ngSwitchCase="'option1'">Option 1 Selected</div>
+  <div *ngSwitchCase="'option2'">Option 2 Selected</div>
+  <div *ngSwitchDefault>Default Option Selected</div>
+</div>
+
+<div [ngClass]="{ 'highlight': isHighlighted }">Dynamic Class Binding</div>
+<div [ngStyle]="{ 'color': textColor, 'font-weight': fontWeight }">Dynamic Style Binding</div>
+
+<input [(ngModel)]="inputValue" placeholder="Enter text">
+
+<ng-container *ngTemplateOutlet="template"></ng-container>
+<ng-template #template>
+  <p>This is a template content.</p>
+</ng-template>
+app.component.ts
+
+typescript
+Kodu kopyala
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  isVisible = true;
+  items = ['Item 1', 'Item 2', 'Item 3'];
+  selectedOption = 'option1';
+  isHighlighted = true;
+  textColor = 'blue';
+  fontWeight = 'bold';
+  inputValue = '';
+}
+Bu örnekle, Angular'da yer alan built-in direktiflerin nasıl kullanılacağını pratik bir şekilde görmüş olursunuz. Her bir direktifin kendine has özellikleri ve kullanım alanları vardır, bu yüzden projenizin gereksinimlerine göre en uygun direktifi seçmek önemlidir.

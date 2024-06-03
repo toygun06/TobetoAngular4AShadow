@@ -1,0 +1,52 @@
+<p>pipe-example works!</p>,
+<div>
+  <h2>DatePipe</h2>
+  <p>Today is {{ today | date }}</p>
+  <p>Full date: {{ today | date:'fullDate' }}</p>
+  <p>Short time: {{ today | date:'shortTime' }}</p>
+
+  <h2>UpperCasePipe & LowerCasePipe</h2>
+  <p>Upper case: {{ name | uppercase }}</p>
+  <p>Lower case: {{ name | lowercase }}</p>
+
+  <h2>CurrencyPipe</h2>
+  <p>Amount: {{ amount | currency }}</p>
+  <p>Amount (EUR): {{ amount | currency:'EUR' }}</p>
+
+  <h2>DecimalPipe</h2>
+  <p>Number: {{ amount | number }}</p>
+  <p>Number (1.2-2): {{ amount | number:'1.2-2' }}</p>
+
+  <h2>PercentPipe</h2>
+  <p>Percentage: {{ percentage | percent }}</p>
+
+  <h2>JsonPipe</h2>
+  <p>JSON: {{ jsonData | json }}</p>
+
+  <h2>SlicePipe</h2>
+  <p>Items: {{ items | slice:1:3 }}</p>
+</div>
+
+
+<div>
+  <h1>Translate Pipe Demo</h1>
+  <p>{{ message | appTranslate:language }}</p>
+
+  <label for="message">Message:</label>
+  <select id="message" #messageSelect (change)="updateMessage(messageSelect.value)">
+    <option value="hello">Hello</option>
+    <option value="goodbye">Goodbye</option>
+    <option value="welcome">Welcome</option>
+    <option value="merhaba">Merhaba</option>
+    <option value="hoşçakal">Hoşçakal</option>
+    <option value="hoşgeldiniz">Hoşgeldiniz</option>
+  </select>
+
+  <label for="language">Language:</label>
+  <select id="language" #languageSelect (change)="updateLanguage(languageSelect.value)">
+    <option value="en">English</option>
+    <option value="tr">Turkish</option>
+  </select>
+</div>
+
+
