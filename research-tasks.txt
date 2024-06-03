@@ -13,9 +13,13 @@ SlicePipe: Dizileri veya dizgileri kesmek için kullanılır.
 
 http://localhost:4200/pipe-example
 
+####################################
+
 - translate isminde bir pipe oluşturunuz, verilen değerin istenilen dilde çevirisini geri dönmelidir.
 
 http://localhost:4200/pipe-example Translate Pipe Demo
+
+####################################
 
 - Angular'da yer alan built-in directive'leri araştırınız ve notlar tutunuz.
 - Angular'da yer alan built-in yapısal directive'leri araştırınız ve notlar tutunuz.
@@ -151,3 +155,9 @@ export class AppComponent {
   inputValue = '';
 }
 Bu örnekle, Angular'da yer alan built-in direktiflerin nasıl kullanılacağını pratik bir şekilde görmüş olursunuz. Her bir direktifin kendine has özellikleri ve kullanım alanları vardır, bu yüzden projenizin gereksinimlerine göre en uygun direktifi seçmek önemlidir.
+
+####################################
+
+- appButton isminde bir directive oluşturunuz. Uygulandığı button elementine bir stil görünümü kazandırmalıdır.
+
+http://localhost:4200/

@@ -7,6 +7,7 @@ import { ProductCardListComponent } from '../../features/products/components/pro
 import { ProductListItem } from '../../features/products/models/product-list-item';
 import { SharedModule } from '../../shared/shared.module';
 import { IfNotDirective } from '../../shared/directives/if-not.directive';
+import { AppButtonDirective } from '../../shared/directives/appButton.directive';
 
 @Component({
   selector: 'app-home-page',
@@ -18,7 +19,8 @@ import { IfNotDirective } from '../../shared/directives/if-not.directive';
     SharedModule,
     CategoryListGroupComponent,
     ProductCardListComponent,
-    IfNotDirective
+    IfNotDirective,
+    AppButtonDirective
 
   ],
   templateUrl: './home-page.component.html',
